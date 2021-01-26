@@ -1,7 +1,12 @@
 const express = require('express')
 const app = express()
 
-let lista = [{objeto:"leite"}] // lista fica em cinza// toda vez que for um array eh um colchetes.
+let lista = [{
+    id:1,
+    objeto:"leite"
+}] // lista fica em cinza// toda vez que for um array eh um colchetes.
+
+
 
 //app get e app post. 
 // o app use roda independente do que a pessoa pedir
@@ -28,15 +33,28 @@ app.post("/",(request,response)=> {
 })
 
 
+app.delete("/:id",(request,response)=> {
 
-//app.listen(5000, function(){ console.log("rodando")})   //vai deixar em modo de escuta, rodando constantemente
+let id_var = request.params.id
+
+const find_index = lista.findIndex(obj => obj.id == id_var)
+//lista[id_var].delete
+
+
+
+}) 
+
+
+
+
 
 
 // node.js roda o arquivo
 
 // construir as coisas na sequencia
 
-app.listen(5000, () => { console.log("rodando")})   //vai deixar em modo de escuta, rodando constantemente
+//app.listen(5000, function(){ console.log("rodando")})   //vai deixar em modo de escuta, rodando constantemente
+  app.listen(5000, () => { console.log("rodando")})   //vai deixar em modo de escuta, rodando constantemente
 
 
 //#npm i nodemon // nao precisa ficar reiniciando o pc
